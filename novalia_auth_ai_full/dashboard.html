@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Dashboard</title></head>
+<body>
+  <h2>AI Agent Paneli</h2>
+  <p>Hoş geldin! Bir işlem seç:</p>
+  <form id="ai-form">
+    <textarea name="prompt" rows="4" cols="50" placeholder="Bir şey sor..."></textarea><br>
+    <button type="submit">AI'ya Sor</button>
+  </form>
+  <pre id="response"></pre>
+  <script>
+    document.getElementById("ai-form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const prompt = e.target.prompt.value;
+      const res = await fetch("/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt })
+      });
+      const data = await res.json();
+      document.getElementById("response").innerText = data.response || "Yanıt yok.";
+    });
+  </script>
+</body>
+</html>
