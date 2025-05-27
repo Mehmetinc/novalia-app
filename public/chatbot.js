@@ -1,1 +1,0 @@
-console.log("Chatbot JS entegre edilecek...");
