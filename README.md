@@ -1,1 +1,0 @@
-# novalia-app
